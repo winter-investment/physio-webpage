@@ -1,0 +1,1 @@
+this is a project for a brand where we will make a website which is not fully responsive but kore of a designed and awareness website of physio, this project is mainly focused on html and css since there is no responsiveness from the user ther is no much role of js... constitutive criticism always welcomed thank you
