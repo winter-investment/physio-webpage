@@ -14,6 +14,3 @@ We are developing a brand awareness website for **The Physiospire**—a design-f
 
 We welcome constructive feedback throughout the development process to ensure optimal brand representation.  
 
----
-
-(Note: This version maintains all your original meaning while improving flow, grammar and professional presentation. The text is clean for direct copy-paste use.)
