@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physiospire | Professional Physiotherapy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --primary: #AA2A2A; /* Dark red */
+            --primary-light: #FF4A4A; /* Bright red */
+            --primary-lighter: #FF7A7A; /* Light red */
+            --primary-lightest: #FFD5D5; /* Very light red */
+            --dark: #2C2C2C; /* Dark gray */
+            --light: #FAF8F8; /* Very light gray */
+            --white: #FFFFFF;
+            --header-height: 80px;
+            --header-shrink-height: 60px;
+            --slogan-color: #FFD700; /* Gold */
+            --title-color: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+            background-color: var(--light);
+        }
+        
+        /* ===== BACKGROUND IMAGE ===== */
+        .background-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .background-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            animation: zoomOut 8s ease-out forwards;
+            transform: scale(1.2);
+        }
+
+        @keyframes zoomOut {
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        /* ===== MAIN TITLE ===== */
+        .main-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .main-title h1 {
+            font-size: 6rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeInTitle 1.5s ease-out 0.5s forwards;
+        }
+
+        @media (max-width: 768px) {
+            .main-title h1 {
+                font-size: 3.5rem;
+                white-space: nowrap;
+                color: var(--white);
+                text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            }
+        }
+
+        @keyframes fadeInTitle {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -40%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: transparent;
+            z-index: 1000;
+            height: var(--header-height);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--white);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--white);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Scrolled state styles */
+        header.scrolled {
+            height: var(--header-shrink-height);
+        }
+        
+        header.scrolled .logo-icon {
+            font-size: 1.7rem;
+            color: var(--primary);
+        }
+        
+        header.scrolled .logo-text {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        header.scrolled nav a {
+            color: var(--dark);
+        }
+        
+        header.scrolled nav a::after {
+            background-color: var(--primary);
+        }
+        
+        /* Mobile menu toggle - hidden on desktop */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+        
+        header.scrolled .menu-toggle {
+            color: var(--primary);
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding-top: var(--header-height);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 30px;
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+          
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 1.3rem;
+                width: 90%;
+                margin: 0 auto 20px;
+                color: var(--white);
+                top:-140px;
+            }
+        }
+        
+        /* ===== WHY PHYSIOSPIRE SECTION ===== */
+        .why-section {
+            background-color: var(--white);
+            padding: 100px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .why-container {
+                flex-direction: column;
+                gap: 30px;
+                padding: 0 20px;
+            }
+        }
+
+        .why-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: slideInLeft 1s ease-out 0.5s forwards;
+        }
+
+        @media (max-width: 768px) {
+            .why-image {
+                width: 100%;
+                transform: translateX(-20px);
+            }
+        }
+
+        .why-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .why-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .why-content {
+            flex: 1;
+            transform: translateX(50px);
+            opacity: 0;
+            animation: slideInRight 1s ease-out 0.5s forwards;
+        }
+
+        @media (max-width: 768px) {
+            .why-content {
+                width: 100%;
+                transform: translateX(20px);
+            }
+        }
+
+        .why-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .why-content h2 {
+                font-size: 2rem;
+                text-align: center;
+            }
+        }
+
+        .why-content h2::after {
+            
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .why-content h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .why-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .why-content p {
+                text-align: center;
+            }
+        }
+
+        .why-points {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .why-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background-color: var(--primary-lightest);
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .why-point:hover {
+            background-color: var(--primary-lighter);
+            transform: translateY(-3px);
+        }
+
+        .why-point i {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-top: 3px;
+        }
+
+        .why-point h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .why-point p {
+            margin-bottom: 0;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* ===== OUR SERVICES SECTION ===== */
+        .our-services {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .service-item {
+            position: relative;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @media (max-width: 768px) {
+            .service-item {
+                height: 200px;
+            }
+        }
+
+        .service-item:nth-child(1) { animation-delay: 0.1s; }
+        .service-item:nth-child(2) { animation-delay: 0.2s; }
+        .service-item:nth-child(3) { animation-delay: 0.3s; }
+        .service-item:nth-child(4) { animation-delay: 0.4s; }
+        .service-item:nth-child(5) { animation-delay: 0.5s; }
+        .service-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .service-item:nth-child(1)::before {
+            
+            background-image:url('./poki.jpeg');
+        }
+
+        .service-item:nth-child(5)::before {
+            background-image: url('./_\ \(4\).jpeg');
+        }
+
+        .service-item:nth-child(3)::before {
+            background-image: url('./_\ \(2\).jpeg');
+        }
+        .service-item:nth-child(4)::before {
+            background-image: url('./_\ \(5\).jpeg');
+        }
+        .service-item:nth-child(2)::before {
+            background-image: url('./Pilates\ aesthetics.jpeg');
+        }
+        .service-item:nth-child(6)::before {
+            background-image: url('./_\ \(6\).jpeg');
+        }
+
+        .service-item-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(170, 42, 42, 0.7);
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .service-item:hover .service-item-content {
+            opacity: 1;
+        }
+
+        .service-item:hover {
+            border-color: transparent;
+            transform: translateY(-5px);
+        }
+
+        .service-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .service-item p {
+            font-size: 1rem;
+        }
+
+        /* ===== GOOGLE REVIEWS SECTION ===== */
+        .google-reviews {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+
+        .reviews-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 25px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 768px) {
+            .reviews-scroll {
+                gap: 15px;
+                padding: 15px 0;
+            }
+        }
+
+        .review-card {
+            flex: 0 0 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            scroll-snap-align: start;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+            animation-delay: calc(var(--order) * 0.1s);
+            border: 1px solid var(--primary-lightest);
+        }
+
+        @media (max-width: 768px) {
+            .review-card {
+                flex: 0 0 85%;
+                padding: 20px;
+            }
+            .main-title{
+                font-size: xx-small;
+                position:relative;
+                left: -300px;
+                top: 370px;
+            }
+            
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--primary-light);
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-bottom: 5px;
+        }
+
+        .review-date {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .review-text {
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* Hide scrollbar but keep functionality */
+        .reviews-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .footer-address {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-address p {
+            margin-bottom: 8px;
+        }
+        
+        /* ===== MOBILE SPECIFIC STYLES ===== */
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 70px;
+                --header-shrink-height: 60px;
+            }
+            
+            /* Show mobile menu toggle */
+            .menu-toggle {
+                display: block;
+            }
+            
+            /* Hide desktop nav by default */
+            nav {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.9);
+                padding: 20px 0;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+            
+            /* Show mobile nav when active */
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            /* Stack nav items vertically */
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 20px;
+            }
+            
+            /* Make nav links full width */
+            nav a {
+                display: block;
+                padding: 10px 0;
+                font-size: 1.1rem;
+                color: var(--white);
+            }
+            
+            /* Adjust header padding */
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            /* Make logo slightly smaller */
+            .logo-icon {
+                font-size: 1.8rem;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            /* Adjust footer padding */
+            footer {
+                padding: 40px 0;
+            }
+
+            ss than 576px)
+
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- BACKGROUND IMAGE -->
+    <div class="background-container">
+        <img src="blog384.webp" alt="Physiotherapy background" class="background-img">
+        
+        <!-- MAIN TITLE -->
+        <div class="main-title">
+            <h1 style="position: relative; bottom: 10px; left:700px; color:  #6d0814;">PHYSIOSPIRE</h1>
+            
+        </div>
+        
+        <!-- HEADER -->
+        <header id="mainHeader">
+            <div class="header-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-bone logo-icon"></i>
+                    <span class="logo-text">PHYSIOSPIRE</span>
+                </a>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Conditions</a></li>
+                        <li><a href="#">Techniques</a></li>
+                        <li><a href="#">Evidence</a></li>
+                        <li><a href="#">Courses</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2 style="color: #b24b4b;">Access the latest research, and rehabilitation protocols used by professionals worldwide</h2>
+            </div>
+        </section>
+    </div>
+    
+    <!-- WHY PHYSIOSPIRE SECTION -->
+    <section class="why-section">
+        <div class="why-container">
+            <div class="why-image">
+                <img src="pintrest_summer.jpeg" alt="Why choose Physiospire">
+            </div>
+            <div class="why-content">
+                <h2>Why Choose Physiospire?</h2>
+                <p>At Physiospire, we combine cutting-edge research with compassionate care to deliver exceptional physiotherapy services tailored to your unique needs.</p>
+                
+                <div class="why-points">
+                    <div class="why-point">
+                        <i class="fas fa-user-md"></i>
+                        <div>
+                            <h3>Expert Practitioners</h3>
+                            <p>Our team consists of highly trained specialists with years of clinical experience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="why-point">
+                        <i class="fas fa-clinic-medical"></i>
+                        <div>
+                            <h3>State-of-the-Art Facility</h3>
+                            <p>Modern equipment and treatment rooms designed for optimal recovery.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="why-point">
+                        <i class="fas fa-heartbeat"></i>
+                        <div>
+                            <h3>Personalized Treatment</h3>
+                            <p>Custom plans that address your specific condition and goals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR SERVICES SECTION -->
+    <section class="our-services">
+        <div class="services-container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <!-- Service Item 1 -->
+                <div class="service-item">
+                    <div class="service-item-content">
+                        
+                        <h3>Sports Injury Rehab</h3>
+                        <p>Specialized programs for athletes to recover from injuries and enhance performance</p>
+                    </div>
+                </div>
+                
+                <!-- Service Item 2 -->
+                <div class="service-item">
+                    <div class="service-item-content">
+                        <h3>Post-Surgical Recovery</h3>
+                        <p>Customized rehabilitation plans following orthopedic surgeries</p>
+                    </div>
+                </div>
+                
+                <!-- Service Item 3 -->
+                <div class="service-item">
+                    <div class="service-item-content">
+                        <h3>Chronic Pain Management</h3>
+                        <p>Evidence-based approaches to manage and reduce chronic pain</p>
+                    </div>
+                </div>
+                
+                <!-- Service Item 4 -->
+                <div class="service-item">
+                    <div class="service-item-content">
+                        <h3>Pediatric Physiotherapy</h3>
+                        <p>Specialized care for children with developmental or injury-related needs</p>
+                    </div>
+                </div>
+                
+                <!-- Service Item 5 -->
+                <div class="service-item">
+                    <div class="service-item-content">
+                        <h3>Geriatric Care</h3>
+                       
+                        <p>Mobility and pain management solutions for older adults</p>
+                    </div>
+                </div>
+                
+                <!-- Service Item 6 -->
+                <div class="service-item">
+                    <div class="service-item-content">
+                        
+                        <h3>Vestibular Rehabilitation</h3>
+                        <p>Treatment for dizziness and balance disorders</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOOGLE REVIEWS SECTION -->
+    <section class="google-reviews">
+        <div class="services-container">
+            <h2 class="section-title">Google Reviews</h2>
+            <div class="reviews-scroll">
+                <!-- Review Card 1 -->
+                <div class="review-card" style="--order: 1">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="profile-pic">
+                        <div>
+                            <div class="reviewer-name">Sarah Johnson</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-date">2 weeks ago</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"The team at Physiospire completely transformed my recovery after knee surgery. Their evidence-based approach made all the difference!"</p>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="review-card" style="--order: 2">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-pic">
+                        <div>
+                            <div class="reviewer-name">Michael Chen</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-date">1 month ago</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Professional, knowledgeable, and caring staff. My back pain improved significantly after just a few sessions."</p>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="review-card" style="--order: 3">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Profile" class="profile-pic">
+                        <div>
+                            <div class="reviewer-name">Emma Rodriguez</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="review-date">3 weeks ago</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"The personalized treatment plan helped me regain mobility after my car accident. Highly recommend their services!"</p>
+                </div>
+
+                <!-- Review Card 4 -->
+                <div class="review-card" style="--order: 4">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Profile" class="profile-pic">
+                        <div>
+                            <div class="reviewer-name">David Wilson</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-date">2 months ago</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Exceptional care and attention to detail. They helped me recover from a sports injury faster than I expected."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background-color: darkviolet;">
+        <div class="footer-address">
+            <p>Physiospire Clinic</p>
+            <p>123 Wellness Avenue</p>
+            <p>Healthville, HV 12345</p>
+            <p>Phone: (555) 123-4567</p>
+            <p>Email: info@physiospire.com</p>
+        </div>
+        <p>&copy; 2023 Physiospire. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Enhanced smooth scroll detection with requestAnimationFrame
+        let lastScrollPosition = 0;
+        let ticking = false;
+        const header = document.getElementById('mainHeader');
+        
+        function updateHeader(scrollPos) {
+            if (scrollPos > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+        
+        window.addEventListener('scroll', function() {
+            lastScrollPosition = window.scrollY;
+            
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    updateHeader(lastScrollPosition);
+                    ticking = false;
+                });
+                
+                ticking = true;
+            }
+        });
+        
+        // Mobile menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            menuToggle.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Initialize header state
+        updateHeader(window.scrollY);
+    </script>
+</body>
+</html>
